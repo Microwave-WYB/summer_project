@@ -11,6 +11,9 @@ Prerequisites:
     - IO (file, console)
 
 Schedule:
+-   Week 0:
+    -  Lecture: Data analysis tools overview
+    -  Lab: Introduction to programming
 
 -   Week 1:
     -   Lecture: Basic linear algebra
