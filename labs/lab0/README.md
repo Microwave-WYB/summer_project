@@ -1,118 +1,197 @@
-# Lab 0: Setup your development environment
+# Before you start
 
-In this lab, we will set up the development environment for Python programming.
+## Why using English?
 
-## Shell basics
+We will be using English as the primary language in all course materials, including lab documents like this one, code, and comments. This is because English is the standard language for programming and computer science. Almost all public projects like the libraries and their documentation are written in English. This helps you to practice reading documentation and code written in English, which is essential for your future career.
+
+## How to use this document
+
+Follow the instructions in this document to complete the lab. You will be asked to run commands in the terminal, write code, and answer questions. You can simply share a screenshot of the terminal to show your answers to the questions.
+
+## Using the terminal
+
+You will need to use a terminal emulator to run commands.
+
+-   For Mac, you can use the built-in "Terminal" app.
+-   For Windows, you can use "Terminals" app. Remember to select "Ubuntu" as the shell.
+
+# Shell basics
 
 You will need to use a shell to run commands. This will be the primary way to interact with your computer during this course.
 
-### File system
+You've already used a shell to run commands in the terminal. You've pulled this repository using `git` commands. You've also run Python using the `python` command. In this lab, we will learn more useful shell commands.
 
-A Unix-like file system is organized as a hierarchical structure of directories and files. The root directory is denoted by `/`. Each directory is separated by `/`. For example, `/home/user/Documents` is a directory named `Documents` under the directory `user`, which is under the directory `home`. This string that represents the location of a file or directory is called a path.
+## Why using the shell rather than a GUI (Graphical User Interface)?
 
-#### Absolute path vs. relative path
+You may be more familiar with GUIs. You've been using them since you started using computers. For example, you can use a file explorer to navigate the file system, click on files to open them, and drag and drop files to move them. You can also use a text editor to write code and run it.
 
--   An absolute path starts from the root directory. For example, `/home/user/Documents`.
--   A relative path starts from the current working directory. For example, `Documents`.
+However, the shell is more powerful and efficient for the following reasons:
 
-There are some special directories:
+-   **Direct access to the file system**: You can navigate the file system and manipulate files and directories more efficiently.
+-   **Access to a wide range of command-line tools**: There are many command-line tools that can help you perform various tasks, such as text processing, file management, and system administration.
+-   **Automation**: You can write shell scripts to automate repetitive tasks.
+-   **Easier to build and run programs**: You can easily build your own programs and run them from the shell.
 
--   `.`: the current directory
--   `..`: the parent directory
--   `~`: the home directory
+## Navigating the file system
 
-You can combine these special directories with other directories to form a path. For example, `~/Documents` is the `Documents` directory under the home directory.
+You are already familiar with the file explorer, which allows you to navigate the file system using a graphical interface. In the shell, you can navigate the file system using commands.
 
-#### Basic file system commands
+**Terminalogy**:
 
-You can navigate the file system using the following commands:
+-   **Directory**: A directory is a container for files and other directories. It is similar to a folder in a file explorer.
+-   **File**: A file is a collection of data stored on a computer. It can contain text, images, videos, or any other type of data.
+-   **Path**: A path is a string that specifies the location of a file or directory in the file system.
+-   **Current working directory**: The current working directory is the directory you are currently in. When you open a shell, you are in a directory. This directory is called the current working directory.
 
--   `ls`: list files and directories in the current directory
--   `cd`: change directory
-    -   `cd <target directory>`: change to the target directory
-    -   `cd ..`: change to the parent directory
-    -   `cd ~` or `cd`: change to the home directory
--   `pwd`: print the current working directory
--   `mkdir <directory name>`: create a new directory
--   `rm <file name>`: remove a file
--   `rm -r <directory name>`: remove a directory and its contents
--   `mv <source> <destination>`: move or rename a file or directory
--   `cp <source> <destination>`: copy a file or directory
--   `cp -r <source> <destination>`: copy a directory and its contents
+### Who am I?
 
-####
-
-## Python setup
-
-### Pyenv
-
-We will use [pyenv](https://github.com/pyenv/pyenv) to manage Python versions. You don't have to understand how it works right now. But you will appreciate it when you have to switch between different Python versions for different projects.
-
-Simple installation:
+When you open a shell, you are logged in as a user. You can find out which user you are logged in as using the `whoami` command:
 
 ```bash
-curl https://pyenv.run | bash
+whoami
 ```
 
-Then, append the following lines to your shell configuration file (e.g., `~/.bashrc`, `~/.zshrc`, or `~/.bash_profile`):
+If your username is `student`, the output will be `student`.
+
+> **Note: in the following examples, we will use `student` as the username. Replace `student` with your actual username.**
+
+### Where am I?
+
+When you open a shell, you are in a directory. This directory is called the **current working directory**. You can find out which directory you are in using the `pwd` command:
 
 ```bash
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+pwd
 ```
 
-Restart your shell or run `source ~/.bashrc` (or `~/.zshrc`, `~/.bash_profile`) to apply the changes.
+This command will print the full path of the current working directory. For example, if your username is `student` and you are in the home directory, the output may be `/home/student`.
 
-Now, you can install Python 3.12 with pyenv:
+### Listing files and directories
+
+You can list the files and directories in the current working directory using the `ls` command:
 
 ```bash
-pyenv install 3.12
+ls
 ```
 
-After the installation, set the global Python version to 3.12:
+This command will print the names of the files and directories in the current working directory. For example, if the current working directory contains the files `file1.txt` and `file2.txt`, the output will be:
+
+```
+file1.txt file2.txt
+```
+
+### Creating a directory
+
+You can create a new directory using the `mkdir` command. To use the `mkdir` command, you need to provide the name of the directory you want to create. For example, to create a directory named `mydir`, you can use the following command:
 
 ```bash
-pyenv global 3.12
+mkdir ~/Projects
 ```
 
-Check the Python version:
+This command will create a new directory named `Projects` in the current working directory under the home directory (`~`). We will learn more about paths later in future labs.
+
+### Changing directories
+
+Now that you've created a `Projects` directory, you can change to that directory using the `cd` command. To use the `cd` command, you need to provide the path of the directory you want to change to.
+
+There are multiple ways to specify the path of the directory you want to change to. You may try the following commands:
 
 ```bash
-python --version
+cd ~/Projects
+pwd
 ```
 
-### Create a project directory
-
-Create a directory for your project. You will need to `cd` into a desired directory and run the following command:
+In the example above, the `cd` command changes the current working directory to the `Projects` directory under the home directory (`~`). The `pwd` command prints the full path of the current working directory, which should be `/home/student/Projects`.
 
 ```bash
-mkdir summer_project
-cd summer_project
+cd /home/student/Projects
+pwd
 ```
 
-### Create a virtual environment
-
-We will use [venv](https://docs.python.org/3/library/venv.html) to create a virtual environment for the project. A virtual environment is a self-contained directory that contains a Python installation for a particular version of Python, plus a number of additional packages.
-
-Create a virtual environment:
+In this example, the `cd` command changes the current working directory to the `Projects` directory under the directory `/home/student`. Note that the path `/home/student` is equivalent to `~`, because `~` is a shorthand for the home directory of the current user. The output of the `pwd` command still should be `/home/student/Projects`.
 
 ```bash
-python -m venv .venv
+cd
+cd Projects
+pwd
 ```
 
-Activate the virtual environment:
+In this example, we did the following:
+
+1. The first `cd` command changes the current working directory to the home directory (`~`).
+2. The second `cd` command changes the current working directory to the `Projects` directory under the home directory.
+3. The `pwd` command prints the full path of the current working directory, which should be `/home/student/Projects`.
+
+### Creating a file
+
+Now, let's create a Python script called `hello.py` in the `Projects` directory. You can create a new file using the `touch` command. To use the `touch` command, you need to provide the name of the file you want to create.
+
+First, make sure you are in the `Projects` directory. You can use the `pwd` command to confirm that you are in the `Projects` directory. The output of the `pwd` command should be `/home/student/Projects`.
+
+After you've confirmed that you are in the `Projects` directory, you can create a new directory named `hello` and `cd` into it:
 
 ```bash
-source .venv/bin/activate
+mkdir hello
+cd hello
 ```
 
-You will see the prompt changes to indicate the virtual environment is activated.
+Now, create a new file named `hello.py` using the following command:
 
-## Editor setup
+```bash
+touch hello.py
+```
 
-If you don't have a preferred editor, I recommend using [Visual Studio Code](https://code.visualstudio.com/). It is a lightweight but powerful source code editor that runs on your desktop.
+This command will create a new file named `hello.py` in the current working directory.
 
-### Visual Studio Code
+### Editing a file
 
-Download and install Visual Studio Code from the [official website](https://code.visualstudio.com/).
+You can edit the `hello.py` file using a text editor. You can use any text editor you like. But for now, if you don't know what to use, we've set up Visual Studio Code for you. You can open the `hello.py` file using Visual Studio Code by running the following command:
+
+```bash
+code hello.py
+```
+
+This will open the `hello.py` file in Visual Studio Code. You can write Python code in this file.
+
+You are free to write any Python code you like in this file, but for now, let's write a simple Python script that prints "Hello, world!":
+
+```python
+print("Hello, world!")
+```
+
+After writing the Python code, save the file and close the text editor.
+
+### Printing the content of a file
+
+You can print the content of the `hello.py` file using the `cat` command. To use the `cat` command, you need to provide the name of the file you want to print the content of. For example, to print the content of the `hello.py` file, you can use the following command:
+
+```bash
+cat hello.py
+```
+
+The output of this command should be the content of the `hello.py` file you just created.
+
+### Running a Python script
+
+You can run the `hello.py` Python script using the `python` command. To use the `python` command, you need to provide the name of the Python script you want to run. For example, to run the `hello.py` script, you can use the following command:
+
+```bash
+python hello.py
+```
+
+This command will run the `hello.py` script using the Python interpreter. The output of this command should be `Hello, world!`.
+
+**Take a screenshot** of the terminal showing the output of the `python hello.py` command and share it in the group chat.
+
+# Conclusion
+
+Today, you've learned:
+
+-   How to find out which user you are logged in as
+-   How to find out which directory you are in
+-   How to create directories and files
+-   How to list files and directories
+-   How to change directories
+-   How to print the content of a file
+-   How to run a Python script
+
+These are the basic shell commands you will need to use throughout this course. You will learn more advanced shell commands in the upcoming labs.
