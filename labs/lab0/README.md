@@ -125,6 +125,38 @@ In this example, we did the following:
 2. The second `cd` command changes the current working directory to the `Projects` directory under the home directory.
 3. The `pwd` command prints the full path of the current working directory, which should be `/home/student/Projects`.
 
+#### Special directories
+
+There are some special directories that you can use as shortcuts:
+
+-   `.`: The current directory.
+-   `..`: The parent directory.
+-   `~`: The home directory of the current user.
+
+For example, you can try the following commands:
+
+```bash
+cd ~
+pwd
+```
+
+This will change the current working directory to the home directory of the current user and print the full path of the current working directory.
+
+```bash
+cd ~/Projects
+cd ..
+pwd
+```
+
+This will change the current working directory to the `Projects` directory under the home directory and then change the current working directory to the parent directory of the `Projects` directory (which is the home directory)
+
+```bash
+cd .
+pwd
+```
+
+This will change the current working directory to the current directory, which will have no effect. It seems like there's no meaningful use of the `.` directory, but we will learn more about it in the future labs.
+
 ### Creating a file
 
 Now, let's create a Python script called `hello.py` in the `Projects` directory. You can create a new file using the `touch` command. To use the `touch` command, you need to provide the name of the file you want to create.
