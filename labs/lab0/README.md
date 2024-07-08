@@ -17,9 +17,13 @@ You will need to use a terminal emulator to run commands.
 
 # Shell basics
 
+**What is a shell?**
+
+A shell is a program that provides a command-line interface to interact with the operating system. It allows you to run commands, manage files and directories, and automate tasks.
+
 You will need to use a shell to run commands. This will be the primary way to interact with your computer during this course.
 
-You've already used a shell to run commands in the terminal. You've pulled this repository using `git` commands. You've also run Python using the `python` command. In this lab, we will learn more useful shell commands.
+You've already used a shell to run commands in the terminal. In this lab, we will learn more useful shell commands.
 
 ## Why using the shell rather than a GUI (Graphical User Interface)?
 
