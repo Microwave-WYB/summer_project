@@ -1,4 +1,5 @@
-# YWYM-001: Introduction to Data Analysis with Python - For High School Students
+# YWYM-001: Introduction to Data Analysis with Python
+For High School Students
 
 ## Lab 0:
 
