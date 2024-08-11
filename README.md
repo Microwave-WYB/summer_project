@@ -22,3 +22,11 @@ These hands-on components will allow you to apply what you've learned immediatel
 Are you ready to begin? Let's dive in!
 
 ## Syllabus
+### Week 1
+Lecture 0: Introduction to Data Analysis Tools
+### Week 2
+Lecture 1: Introduction to Data Analysis Algorithms; Basic Probabilities and p-value, shown with coin tossing example
+### Week 3
+Lecture 2: Basic Operations with Numpy and Matplotlib
+### Week 4
+Lecture 3: 
